@@ -16,6 +16,7 @@ data/
 
 # Model checkpoints (too large; retrain with train.py)
 checkpoints/*.pt
+checkpoints/*_smoke.pt
 
 # Matplotlib cache
 .mpl_cache/
@@ -30,3 +31,7 @@ Thumbs.db
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Local smoke-test artifacts
+results/smoke/
+results/history_smoke.json

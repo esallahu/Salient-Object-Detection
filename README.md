@@ -27,6 +27,7 @@ ML/
 ```bash
 python -m venv .venv
 source .venv/bin/activate          # macOS / Linux
+.\.venv\Scripts\activate           # Windows PowerShell
 pip install -r requirements.txt
 ```
 
@@ -84,6 +85,13 @@ To verify the pipeline runs end-to-end on a tiny synthetic dataset:
 python make_synthetic.py --out data/synthetic --num 60
 ```
 
+Then run a quick smoke training + evaluation:
+
+```bash
+python train.py --data_root data/synthetic --auto_split --epochs 1 --model baseline --tag smoke
+python evaluate.py --data_root data/synthetic --auto_split --weights checkpoints/best_smoke.pt --tag smoke --num_visuals 3
+```
+
 ## 3. Training
 
 ```bash
@@ -131,7 +139,7 @@ side-by-side visualizations (input / GT / prediction / overlay) into
 ### Streamlit (recommended for live demo)
 
 ```bash
-streamlit run demo.py
+python -m streamlit run demo.py
 ```
 
 Upload an image, see the predicted saliency mask, the overlay, and the
@@ -142,8 +150,28 @@ inference time per image.
 Open `demo_notebook.ipynb` and run all cells.
 
 ## Presentation
-
 - PDF slides: [slides/presentation.pdf](slides/presentation.pdf)
+- Open slides from terminal:
+
+```bash
+# Windows (PowerShell)
+start .\slides\presentation.pdf
+# or
+ii .\slides\presentation.pdf
+
+# macOS
+open ./slides/presentation.pdf
+
+# Linux
+xdg-open ./slides/presentation.pdf
+```
+
+- Optional: print PDF text in terminal (not slide rendering):
+
+```bash
+python -m pip install pymupdf
+python -c "import fitz; d=fitz.open(r'slides/presentation.pdf'); print('\n'.join(p.get_text() for p in d))"
+```
 
 ## 6. Experiments
 
