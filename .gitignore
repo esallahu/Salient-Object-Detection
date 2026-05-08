@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Dataset (too large; use download_dataset.py to recreate)
+data/
+
+# Model checkpoints (too large; retrain with train.py)
+checkpoints/*.pt
+
+# Matplotlib cache
+.mpl_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
